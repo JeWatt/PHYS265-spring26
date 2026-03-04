@@ -1,0 +1,103 @@
+#Really no multiline comments??
+"""def gravPotential(mass: Number, xM: Number, yM: Number, xE: Number, yE:Number,integration_window: float = 1e-3) -> float:
+    
+    Compute the gravitational potential at point (xM, yM) due to a point mass M
+    located at (xE, yE), using the integral definition of gravitational potential.
+
+    The potential is computed from(should be 3-D coordinates but assume 2-D from problem specs):
+
+        Φ(r) = -G ∫ (ρ(r') / |r - r'|) d^2r'
+
+    where the mass density ρ(r') is modeled as:
+    
+        ρ(r') = M δ(x' - xm) δ(y' - ym)
+
+    Integrating dirac deltas(0 everywhere except at one point infinity with finite integral=1) gives us wonky infinities or 0 where they should not be therefore as per the suggestion of my 313 TA
+    I can try creating an "Integration Window" that would allow me to create a small square region around each mass location. This window
+    is small enough to allow us to assume a uniform density patch and 
+
+    ρ≈{ ( M/(2ϵ)^2) inside the patch,
+    ρ≈{ (0)         outdside the patch
+
+    basically replace the infinity in the dirac delta with a uniform density patch by approximating spreading the mass over a tiny finite area so our integration can work
+
+    -----Inputs-----
+    M : float or int
+        Mass of the body (kg). Must be positive.
+    xm, ym : float or int
+        Cartesian coordinates of the mass (meters).
+    x, y : float or int
+        Cartesian coordinates of evaluation point (meters).
+    integration_window : float, optional arguement if one wishes to change the area approximation
+        Half-width of integration window around the mass location (meters).
+        Default set at 1e-3.
+
+    -----Returns-----
+    float
+        Gravitational potential at (x, y) in Joules per kilogram (J/kg).
+
+    Raises
+    ------
+    TypeError
+        If inputs are not numeric.
+    ValueError
+        If mass is non-positive.
+    ZeroDivisionError
+        If evaluation point coincides with mass location.
+    
+    #_____Type checks______
+    for val in (mass, xM, yM, xE, yE, integration_window):
+        if not isinstance(val, (int, float)):
+            raise TypeError("All inputs must be numeric (int or float).")
+
+    # ______Pre-conditions______
+
+    if mass <= 0:
+        raise ValueError("Mass M must be positive.")
+
+    if (mass <= radiusEarth and mass >0):
+        print("Please note this calculation does not consider the Mass of Earth decreasing as Radius decreases, may come back, thinking M = g*R^2 / G ?")
+
+    if integration_window <= 0:
+        raise ValueError("Integration_window must be positive.")
+
+    # Distance from evaluation point to mass
+    r_eval = np.hypot(xM - xE, yM - yE)
+
+    if (r_eval == 0):
+        raise ZeroDivisionError("Gravitational potential is singular at the mass location.")
+    
+    #______Integral Checker and Function Set up_______
+    def integralTime(yP: float, xP: float) -> float:
+        """
+        Integrand for Φ = -G ∫ ρ(r') / |r - r'| d^2r' or where the computation is done
+        """
+        r_prime_dist = np.hypot(xE - xP, yE - yP)
+        if r_prime_dist == 0:
+            return 0.0
+        return 1.0 / r_prime_dist
+        #notice density is constant therefore we will muliptly this result by it later
+
+    #_____Setup Integration window with given points and compute calling integralTime, can you access function within a function without calling the parent?_____
+    x_min = xM - integration_window
+    x_max = xM + integration_window
+    y_min = yM - integration_window
+    y_max = yM + integration_window
+
+    integral_value, esterr = dblquad(integralTime, x_min, x_max, lambda _: y_min, lambda _: y_max)
+    #NOTE Here we need a double integral or one for each coordinate given NOTE Our Integrand for dblquad needs to be f(y,x) to work;esterr gives estimated error not needed here
+
+    # Multiply by effective density mass / area; as mentioned in integralTime
+    area = (2 * integration_window) ** 2
+    rho_effective = mass / area
+
+    potentialF = -G * rho_effective * integral_value
+
+    #______Post-condition______
+    if not np.isfinite(potentialF):
+        raise ArithmeticError("Computed potential is not finite.")
+        
+    return float(potentialF)"""
+
+#Please note the above program is my attempt at trying to get around the singularity by solving the integral form of the Gravitational Potential Equation, This did not really get around the issue but I am leaving it here for my refrence
+#Below will be a new method using explict formulas to get our answer

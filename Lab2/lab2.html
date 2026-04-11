@@ -7940,25 +7940,25 @@ zontal line at zero to indicate perfect agreement (like we did in Lecture 13). D
 
 <span class="n">ax_top</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span> <span class="n">centers</span><span class="p">,</span> <span class="n">counts</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Poisson error bars"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"black"</span><span class="p">)</span>
 
-<span class="c1"># Overlay fit</span>
+<span class="c1">#Overlay fit</span>
 <span class="n">x_dense</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">fit_min</span><span class="p">,</span> <span class="n">fit_max</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
 <span class="n">y_dense</span> <span class="o">=</span> <span class="n">breit_wigner</span><span class="p">(</span><span class="n">x_dense</span><span class="p">,</span> <span class="o">*</span><span class="n">params</span><span class="p">)</span>
 
 <span class="n">ax_top</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span> <span class="n">x_dense</span><span class="p">,</span> <span class="n">y_dense</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Breit-Wigner fit"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">)</span>
 
-<span class="c1"># Vertical dotted lines for fitting range</span>
+<span class="c1">#Vertical dotted lines for fitting range</span>
 <span class="n">ax_top</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">fit_min</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
 <span class="n">ax_top</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">fit_max</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
 
 <span class="n">ax_bot</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">fit_min</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
 <span class="n">ax_bot</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">fit_max</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
 
-<span class="c1"># Labels and legend</span>
+<span class="c1">#Labels and legend</span>
 <span class="n">ax_top</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Counts"</span><span class="p">)</span>
 <span class="n">ax_top</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Z Boson Invariant Mass Fit"</span><span class="p">)</span>
 <span class="n">ax_top</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
-<span class="c1"># Annotation box with one decimal place</span>
+<span class="c1">#Annotation box with one decimal place</span>
 <span class="n">annotation_text</span> <span class="o">=</span> <span class="p">(</span>
     <span class="sa">f</span><span class="s2">"Mass = </span><span class="si">{</span><span class="n">m0_fit</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">m0_err</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> GeV</span><span class="se">\n</span><span class="s2">"</span>
     <span class="sa">f</span><span class="s2">"χ²/NDOF = </span><span class="si">{</span><span class="n">chi2</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">ndof</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">chi2_red</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
@@ -7967,7 +7967,7 @@ zontal line at zero to indicate perfect agreement (like we did in Lecture 13). D
 
 <span class="n">ax_top</span><span class="o">.</span><span class="n">text</span><span class="p">(</span> <span class="mf">0.97</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="n">annotation_text</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax_top</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">"right"</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">"top"</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s2">"round"</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">"white"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">))</span>
 
-<span class="c1"># Bottom panel: residuals</span>
+<span class="c1">#Bottom panel: residuals</span>
 <span class="n">ax_bot</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span> <span class="n">centers</span><span class="p">,</span> <span class="n">residuals</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span>
 
 <span class="n">ax_bot</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">)</span>
@@ -8084,7 +8084,7 @@ p-value = 0.45895
 <span class="c1">#Clip at 35</span>
 <span class="n">delta_chi2_clipped</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">delta_chi2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">35</span><span class="p">)</span>
 
-<span class="c1"># For 2 fitted parameters from Lecture 11</span>
+<span class="c1">#For 2 fitted parameters from Lecture 11</span>
 <span class="c1"># 1σ is Δχ² = 2.30</span>
 <span class="c1"># 3σ is Δχ² = 11.83</span>
 <span class="n">level_1sigma</span> <span class="o">=</span> <span class="mf">2.30</span>
@@ -8184,11 +8184,10 @@ resolution of the ATLAS detector.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Analysis-and-Discussion">Analysis and Discussion<a class="anchor-link" href="#Analysis-and-Discussion">¶</a></h2><p>In this experiment, we reconstructed the invariant mass of lepton using given data. We identified the presence of the Z boson($Z^0$) through its characteristic resonance shape. The invariant mass was calculated from the summed four-momenta of the two leptons in each event, and the resulting distribution showed a clear peak near $91 GeV$, consistent with the expected mass of $Z^0$.</p>
+<h2 id="Analysis-and-Discussion">Analysis and Discussion<a class="anchor-link" href="#Analysis-and-Discussion">¶</a></h2><p>In this Lab, we reconstructed the invariant mass of lepton using given data. We identified the presence of the Z boson($Z^0$) through its characteristic resonance shape. The invariant mass was calculated from the summed four-momenta of the two leptons in each event, and the resulting distribution showed a clear peak near $91 GeV$, consistent with the expected mass of $Z^0$.</p>
 <p>To quantitatively describe the resonance, the data was fit using a Breit–Wigner distribution, which models the natural line shape of unstable particles. The fit returned a central mass value of $m_0 = 90.3 ± 0.1 GeV$ and a decay width of $Γ =5.9 ± 0.1 GeV$. These values are in reasonable agreement with the accepted values of $91.1876 GeV$ for $Z^0$ mass. Any deviations observed are likely due to finite statistics, binning effects, and the absence of detector resolution modeling in the fit.</p>
-<p>Our fit was evaluated using chi-squared which we found to be $ χ^2$ = 8.8. A value near 1 indicates a good fit; values significantly larger than 1 suggest that the model does not fully capture the data, while values much less than one may indicate over-estimated uncertainties or correlations between bins. Here our reduced chi-squared suggests that the Breit–Wigner model provides a reasonable, though not perfect, description of the data.</p>
-<p>Several sources of systematic deviation may contribute to error. First, the simple Breit–Wigner function used does not account for background processes, such as continous lepton production, which can add a non-resonant contribution to the spectrum. Second, detector effects such as finite momentum resolution and energy smearing are not included, which can broaden the observed peak beyond the our decay width. Additionally, binning choices can influence both the visual shape of the histogram and the stability of the fit.</p>
-<p>Overall, our analysis indicates a fundamental particle resonance from experimental data. The calculated values are consistent with our given $Z^0$ mass, within reasonable uncertainty. Improvements to our analysis could include incorporating a background term in the fit, using unbinned fitting techniques, or modeling detector resolution effects to achieve a more precise mass value.</p>
+<p>Our fit was evaluated using chi-squared which we found to be $ χ^2$ = 8.8. A value near 1 indicates a good fit; values significantly larger than 1 suggest that the model does not fully capture the data, while values much less than one may indicate over-estimated uncertainties or correlations between bins. Here our reduced chi-squared suggests that the Breit–Wigner model provides an okay description of the data.</p>
+<p>Overall, our analysis indicates a fundamental particle resonance from experimental data. The calculated values are consistent with our given $Z^0$ mass, within a somewhat reasonable uncertainty. Improvements to our analysis could include incorporating a background term in the fit, using unbinned fitting techniques, or modeling detector resolution effects to achieve a more precise mass value.</p>
 </div>
 </div>
 </div>
